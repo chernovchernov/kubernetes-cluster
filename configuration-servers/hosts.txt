@@ -1,0 +1,19 @@
+[k8s_1st_master]
+control1.boris.local ansible_host=192.168.247.148
+
+[k8s_other_masters]
+control2.boris.local ansible_host=192.168.247.149
+control3.boris.local ansible_host=192.168.247.150
+
+[k8s_controls:children]
+k8s_1st_master
+k8s_other_masters
+
+[k8s_workers]
+worker1.boris.local  ansible_host=192.168.247.151
+worker2.boris.local  ansible_host=192.168.247.152
+worker3.boris.local  ansible_host=192.168.247.153
+
+[k8s_cluster:children]
+k8s_controls
+k8s_workers
